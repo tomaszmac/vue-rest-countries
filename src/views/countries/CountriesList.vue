@@ -1,27 +1,29 @@
 <template>
-  <CountryFilter
-    @input-country="searchForCountry"
-    @filter="searchFilteredCountries"
-  />
-  <section class="countries">
-    <div v-if="isLoading">
-      <base-spinner></base-spinner>
-    </div>
-    <div v-else-if="hasCountries" class="countries__list">
-      <CountryItem
-        v-for="(country, index) in filteredCountries"
-        :key="index"
-        :countryFlagSrc="country.flag"
-        :countryName="country.name"
-        :countryPopulation="country.population"
-        :countryRegion="country.region"
-        :countryCapital="country.capital"
-      />
-    </div>
-    <h2 class="heading-secondary" v-else>
-      {{ errorMessage || 'No countries found. Please try another query.' }}
-    </h2>
-  </section>
+  <main>
+    <CountryFilter
+      @input-country="searchForCountry"
+      @filter="searchFilteredCountries"
+    />
+    <section class="countries">
+      <div v-if="isLoading">
+        <base-spinner></base-spinner>
+      </div>
+      <div v-else-if="hasCountries" class="countries__list">
+        <CountryItem
+          v-for="(country, index) in filteredCountries"
+          :key="index"
+          :countryFlagSrc="country.flag"
+          :countryName="country.name"
+          :countryPopulation="country.population"
+          :countryRegion="country.region"
+          :countryCapital="country.capital"
+        />
+      </div>
+      <h2 class="heading-secondary" v-else>
+        {{ errorMessage || 'No countries found. Please try another query.' }}
+      </h2>
+    </section>
+  </main>
 </template>
 
 <script>
