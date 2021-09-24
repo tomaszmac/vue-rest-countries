@@ -1,9 +1,6 @@
 <template>
   <main>
-    <CountryFilter
-      @input-country="searchForCountry"
-      @filter="searchFilteredCountries"
-    />
+    <CountryFilter @input-country="searchForCountry" @filter="searchFilteredCountries" />
     <section class="countries">
       <div v-if="isLoading">
         <base-spinner></base-spinner>
@@ -38,7 +35,7 @@ export default {
   },
   data() {
     return {
-      error: null,
+      errorMessage: null,
       isLoading: null,
       countryFilter: {
         name: null,
@@ -64,8 +61,7 @@ export default {
         if (name && region) {
           return (
             // eslint-disable-next-line operator-linebreak
-            country.name.toLowerCase().includes(name) &&
-            country.region.toLowerCase() === region
+            country.name.toLowerCase().includes(name) && country.region.toLowerCase() === region
           );
         }
         if (name) {
@@ -78,7 +74,7 @@ export default {
       });
     },
     hasCountries() {
-      return !this.isLoading && this.filteredCountries.length !== 0;
+      return !this.isLoading && this.filteredCountries && this.filteredCountries?.length !== 0;
     },
   },
   methods: {
@@ -87,7 +83,7 @@ export default {
       try {
         await this.$store.dispatch('fetchAllCountries');
       } catch (err) {
-        this.errorMessage = err.message || 'Something went wrong';
+        this.errorMessage = `${err.message}. Please refresh page or try again later.` || 'Something went wrong';
       }
       this.isLoading = false;
     },

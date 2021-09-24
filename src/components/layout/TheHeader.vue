@@ -12,9 +12,6 @@
 <script>
 export default {
   methods: {
-    setTheme(theme) {
-      this.$store.dispatch('setTheme', theme);
-    },
     toggleDarkMode() {
       const activeTheme = localStorage.getItem('user-theme');
       if (activeTheme === 'light-theme') {
@@ -40,7 +37,7 @@ export default {
   },
   mounted() {
     const initUserTheme = this.getMediaPreference();
-    this.$store.dispatch('toggleDarkMode', initUserTheme);
+    this.$store.dispatch('setPreferredTheme', initUserTheme);
   },
 };
 </script>

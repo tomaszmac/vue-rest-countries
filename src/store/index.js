@@ -35,7 +35,7 @@ const store = createStore({
         commit('setTheme', 'light-theme');
       }
     },
-    setTheme({ commit }, payload) {
+    setPreferredTheme({ commit }, payload) {
       commit('setTheme', payload);
     },
   },
