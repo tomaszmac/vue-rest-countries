@@ -7,7 +7,7 @@
     <div class="details__country flex" v-if="isCountryFiltered">
       <div class="details__img-container">
         <img
-          :src="detailedCountry.flag"
+          :src="detailedCountry.flags[0]"
           :alt="detailedCountry.name + ' flag'"
           class="details__flag"
         />
@@ -27,10 +27,6 @@
             <li class="list--item">
               <span class="font-600">Region:</span>
               {{ detailedCountry.region }}
-            </li>
-            <li class="list--item">
-              <span class="font-600">Sub Region: </span>
-              {{ detailedCountry.subregion }}
             </li>
             <li class="list--item">
               <span class="font-600">Capital: </span>
@@ -152,7 +148,7 @@ export default {
       return this.findCountryNames();
     },
     areThereBorderCountries() {
-      return this.detailedCountry.borders.length !== 0;
+      return this.detailedCountry.borders;
     },
   },
   watch: {

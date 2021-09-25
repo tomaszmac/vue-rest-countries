@@ -9,7 +9,7 @@
         <CountryItem
           v-for="(country, index) in filteredCountries"
           :key="index"
-          :countryFlagSrc="country.flag"
+          :countryFlagSrc="country.flags"
           :countryName="country.name"
           :countryPopulation="country.population"
           :countryRegion="country.region"
@@ -60,7 +60,6 @@ export default {
       return countries.filter((country) => {
         if (name && region) {
           return (
-            // eslint-disable-next-line operator-linebreak
             country.name.toLowerCase().includes(name) && country.region.toLowerCase() === region
           );
         }
