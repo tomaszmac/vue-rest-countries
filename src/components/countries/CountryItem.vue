@@ -1,6 +1,6 @@
 <template>
   <div class="country__card flex" @click="goToDetails">
-    <img :src="countryFlagSrc[1]" alt="" class="country__flag" />
+    <img :src="countryFlagSrc.svg" alt="" class="country__flag" />
     <div class="country__details">
       <h2 class="heading-secondary">{{ this.countryName }}</h2>
       <p class="paragraph">
@@ -21,7 +21,7 @@
 export default {
   props: {
     countryFlagSrc: {
-      type: Array,
+      type: Object,
       required: true,
     },
     countryName: {
